@@ -1,0 +1,3 @@
+[submodule "ahriman"]
+	path = ahriman
+	url = https://github.com/arcan1s/ahriman.git

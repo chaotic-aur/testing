@@ -1,0 +1,39 @@
+version: '3.3'
+services:
+  ahriman:
+    build: .
+    container_name: ahriman
+    command: web
+    privileged: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./builders:/etc/chaotic"
+      - "./ahriman.ini:/etc/ahriman.ini"
+      - "../ahriman:/var/lib/ahriman"
+    environment:
+      AHRIMAN_ARCHITECTURE: "x86_64"
+      AHRIMAN_BUILDER: "temeraire"
+      AHRIMAN_DEBUG: "true"
+      AHRIMAN_GITHUB_DEPLOYMENT: ""
+      AHRIMAN_GITHUB_OWNER: chaotic-aur
+      AHRIMAN_GITHUB_PASSWORD: 
+      AHRIMAN_GITHUB_REPOSITORY: testing-repo
+      AHRIMAN_GITHUB_USERNAME: temeraire
+      AHRIMAN_HOST: "0.0.0.0"
+      AHRIMAN_MULTILIB: "yes"
+      AHRIMAN_OAUTH: ""
+      AHRIMAN_OAUTH_CLIENT_ID: 
+      AHRIMAN_OAUTH_CLIENT_SECRET: 
+      AHRIMAN_OUTPUT: "console"
+      AHRIMAN_PACKAGER: "Garuda Builder <team@garudalinux.org>"
+      AHRIMAN_PORT: 8080
+      AHRIMAN_REPOSITORY: "chaotic-aur"
+      AHRIMAN_REPOSITORY_ROOT: "/var/lib/ahriman/ahriman"
+      AHRIMAN_TELEGRAM: ""
+      AHRIMAN_TELEGRAM_API_KEY:
+      AHRIMAN_TELEGRAM_CHAT_ID:
+      AHRIMAN_UNIX_SOCKET: /var/lib/ahriman/ahriman/ahriman-web.sock
+      AHRIMAN_USER: "ahriman"
+      AHRIMAN_VALIDATE_CONFIGURATION: "yes"
+    restart: always
