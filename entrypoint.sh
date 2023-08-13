@@ -56,7 +56,7 @@ username = $AHRIMAN_GITHUB_USERNAME
 EOF
 
 # builder specific configuration
-[ -n "$AHRIMAN_BUILDER" ] && ln -s /etc/chaotic/"$AHRIMAN_BUILDER".ini /etc/ahriman.ini.d/"$AHRIMAN_BUILDER".ini
+[ -n "$AHRIMAN_BUILDER" ] && ln -sf /etc/chaotic/"$AHRIMAN_BUILDER".ini /etc/ahriman.ini.d/"$AHRIMAN_BUILDER".ini
 
 AHRIMAN_DEFAULT_ARGS=("--architecture" "$AHRIMAN_ARCHITECTURE")
 if [ -n "$AHRIMAN_OUTPUT" ]; then

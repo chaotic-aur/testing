@@ -8,9 +8,11 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - "./builders:/etc/chaotic"
-      - "./ahriman.ini:/etc/ahriman.ini"
       - "../ahriman:/var/lib/ahriman"
+      - "./ahriman.ini:/etc/ahriman.ini"
+      - "./secrets/secrets.ini:/etc/ahriman.ini.d/secrets.ini"
+      - "./builders:/etc/chaotic"
+      - "./gnupg:/var/lib/ahriman/.gnupg"
     environment:
       AHRIMAN_ARCHITECTURE: "x86_64"
       AHRIMAN_BUILDER: "temeraire"
