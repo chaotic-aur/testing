@@ -16,45 +16,6 @@ host = $AHRIMAN_HOST
 
 EOF
 
-[ -n "$AHRIMAN_OAUTH" ] && cat <<EOF >"/etc/ahriman.ini.d/00-auth.ini"
-[auth]
-target = oath
-
-[oath]
-client_id = $AHRIMAN_OAUTH_CLIENT_ID
-client_secret = $AHRIMAN_OAUTH_CLIENT_SECRET
-oauth_provider = GithubClient
-oauth_scopes = user:email
-
-EOF
-
-[ -n "$AHRIMAN_TELEGRAM" ] && cat <<EOF >"/etc/ahriman.ini.d/00-telegram.ini"
-[report]
-target = console telegram
-
-[console]
-use_utf = yes
-
-[telegram]
-api_key = $AHRIMAN_TELEGRAM_API_KEY
-chat_id = $AHRIMAN_TELEGRAM_CHAT_ID
-homepage = https://aur.chaotic.cx
-template_path = /usr/share/ahriman/templates/telegram-index.jinja2
-
-EOF
-
-[ -n "$AHRIMAN_GITHUB" ] && cat <<EOF >"/etc/ahriman.ini.d/00-github.ini"
-[upload]
-target = github
-
-[github]
-owner = $AHRIMAN_GITHUB_OWNER
-password = $AHRIMAN_GITHUB_PASSWORD
-repository = $AHRIMAN_GITHUB_REPOSITORY
-username = $AHRIMAN_GITHUB_USERNAME
-
-EOF
-
 # builder specific configuration
 [ -n "$AHRIMAN_BUILDER" ] && ln -sf /etc/chaotic/"$AHRIMAN_BUILDER".ini /etc/ahriman.ini.d/"$AHRIMAN_BUILDER".ini
 

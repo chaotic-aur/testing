@@ -1,0 +1,68 @@
+## Chaotic
+# Issue 655
+linux-xanmod-lts
+
+# Issue 761
+odr-dabmod-git
+
+# Issue 762
+odr-dabmux-git
+
+# Issue 767
+caprice32-git
+
+# Issue 873
+linux-vfio-lts
+
+# Issue 964
+pcsx2-git
+
+# Issue 1110
+dosbox-x-git
+
+# Issue 1185
+awesome-git
+
+# Issue 1186
+i3lock-fancy-git
+
+# Issue 1189
+linux-xanmod-rt
+
+# Issue 1193
+stylepak-git
+
+# Issue 1307
+linux-cachyos-bore # (pkgname is set to linux-bore via interfere, got dropped from AUR due to same PKGBUILD)
+
+# Issue 1325
+linux-clear
+
+# Issue 1330
+linux-tt
+
+# Issue 1522
+linux-nitrous
+
+# Issue 1662
+linux-xanmod
+
+# Issue 1684
+linux-git
+
+# Issue 1921
+linux-drm-tip-git
+linux-drm-next-git
+
+# Issue 2016
+gcc9
+gcc10
+
+# Issue 2119
+trayscale
+
+# Issue 2189
+linux-nitrous-fire
+
+# Issue 2397
+cosmic-epoch-git
