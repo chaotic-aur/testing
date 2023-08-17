@@ -1,7 +1,7 @@
-version: '3.3'
+version: "3.3"
 services:
   ahriman:
-    build: .
+    image: arcan1s/ahriman:edge
     container_name: ahriman
     command: web
     privileged: true
@@ -10,7 +10,9 @@ services:
     volumes:
       - "../ahriman:/var/lib/ahriman"
       - "./ahriman.ini:/etc/ahriman.ini"
-      - "./builders:/etc/chaotic"
+      - "./builders/temeraire.ini:/etc/ahriman.ini.d/temeraire.ini"
+      - "./config/telegram.ini:/etc/ahriman.ini.d/telegram.ini"
+      - "./config/upload.ini:/etc/ahriman.ini.d/upload.ini"
       - "./gnupg:/var/lib/ahriman/.gnupg"
     environment:
       AHRIMAN_ARCHITECTURE: "x86_64"
@@ -23,7 +25,7 @@ services:
       AHRIMAN_PORT: 8080
       AHRIMAN_REPOSITORY: "chaotic-aur"
       AHRIMAN_REPOSITORY_ROOT: "/var/lib/ahriman/ahriman"
-      AHRIMAN_UNIX_SOCKET: /var/lib/ahriman/ahriman/ahriman-web.sock
+      AHRIMAN_UNIX_SOCKET: "/var/lib/ahriman/ahriman/ahriman-web.sock"
       AHRIMAN_USER: "ahriman"
       AHRIMAN_VALIDATE_CONFIGURATION: "yes"
     restart: always
