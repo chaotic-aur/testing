@@ -1,10 +1,11 @@
 version: "3.3"
 services:
-  ahriman:
+  ahriman_master:
     image: arcan1s/ahriman:edge
-    container_name: ahriman
+    container_name: ahriman_master
     command: web
     privileged: true
+    env_file: .env
     ports:
       - "8080:8080"
     volumes:
@@ -12,7 +13,6 @@ services:
       - "./ahriman.ini:/etc/ahriman.ini"
       - "./builders/temeraire.ini:/etc/ahriman.ini.d/temeraire.ini"
       - "./config/telegram.ini:/etc/ahriman.ini.d/telegram.ini"
-      - "./config/upload.ini:/etc/ahriman.ini.d/upload.ini"
       - "./gnupg:/var/lib/ahriman/.gnupg"
     environment:
       AHRIMAN_ARCHITECTURE: "x86_64"
@@ -26,6 +26,35 @@ services:
       AHRIMAN_REPOSITORY: "chaotic-aur"
       AHRIMAN_REPOSITORY_ROOT: "/var/lib/ahriman/ahriman"
       AHRIMAN_UNIX_SOCKET: "/var/lib/ahriman/ahriman/ahriman-web.sock"
+      AHRIMAN_USER: "ahriman"
+      AHRIMAN_VALIDATE_CONFIGURATION: "yes"
+    restart: always
+
+  ahriman_worker:
+    image: arcan1s/ahriman:edge
+    container_name: ahriman_worker
+    command: web
+    privileged: true
+    env_file: .env
+    ports:
+      - "8081:8080"
+    volumes:
+      - "../ahriman_worker:/var/lib/ahriman"
+      - "./ahriman.ini:/etc/ahriman.ini"
+      - "./builders/maximus.ini:/etc/ahriman.ini.d/maximus.ini"
+      - "./config/telegram.ini:/etc/ahriman.ini.d/telegram.ini"
+      - "./gnupg:/var/lib/ahriman/.gnupg"
+    environment:
+      AHRIMAN_ARCHITECTURE: "x86_64"
+      AHRIMAN_BUILDER: "maximus"
+      AHRIMAN_DEBUG: "true"
+      AHRIMAN_HOST: "0.0.0.0"
+      AHRIMAN_MULTILIB: "yes"
+      AHRIMAN_OUTPUT: "console"
+      AHRIMAN_PACKAGER: "Garuda Builder <team@garudalinux.org>"
+      AHRIMAN_PORT: 8080 
+      AHRIMAN_REPOSITORY: "chaotic-aur"
+      AHRIMAN_REPOSITORY_ROOT: "/var/lib/ahriman/ahriman"
       AHRIMAN_USER: "ahriman"
       AHRIMAN_VALIDATE_CONFIGURATION: "yes"
     restart: always

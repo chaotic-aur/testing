@@ -28,9 +28,6 @@ done <<< "$_ROUTINE_PACKAGES"
 
 # Check if packages are installed
 for i in "${PACKAGES[@]}"; do
-    status=$(ahriman status $i | grep "success")
-    if [[ -z $status ]]; then
-      ahriman package-add "$i"
-    fi
+    ahriman status "$i" | grep "Status: success" || ahriman package-add "$i"
 done
 
