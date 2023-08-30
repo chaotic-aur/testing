@@ -52,7 +52,7 @@ services:
       AHRIMAN_MULTILIB: "yes"
       AHRIMAN_OUTPUT: "console"
       AHRIMAN_PACKAGER: "Garuda Builder <team@garudalinux.org>"
-      AHRIMAN_PORT: 8080 
+      AHRIMAN_PORT: 8080
       AHRIMAN_REPOSITORY: "chaotic-aur"
       AHRIMAN_REPOSITORY_ROOT: "/var/lib/ahriman/ahriman"
       AHRIMAN_USER: "ahriman"
